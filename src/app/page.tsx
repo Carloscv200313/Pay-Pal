@@ -1,30 +1,19 @@
-"use client"
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { Carrito } from "@/components/Carrito";
+import { Carts } from "@/components/Carts";
+import { Productos } from "@/components/Objetos";
+
 export default function Home() {
-  const initialOptions = {
-    clientId: "AcfS0ZZ1eLgGXwC_DjwXk8aFs-6aXzTiEopgiwrhxZunt6bXudkTx3FILMW-hKoVdB59UedASJ23W2Hq",
-    currency: "USD",
-    intent: "capture",
-  };
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <PayPalScriptProvider options={initialOptions}>
-        <PayPalButtons style={{ layout: "horizontal" }} 
-        createOrder={async () => {
-          const resp = await fetch("/api/checkout", { method: "POST" });
-          const order = await resp.json();
-          console.log(order);
-          return order; 
-        }}
-        onApprove={async (data, actions) => {
-          console.log(data);
-          await actions.order?.capture();
-        }}
-        onCancel={async (data) => {
-          console.log("se cancelo la orden " + data.orderID);
-        }}
-        />
-      </PayPalScriptProvider>
+    <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="absolute top-10 right-10">
+        <Carrito />
+      </div>
+      <h1 className="text-7xl font-serif">Tienda virtual</h1>
+      <div className="grid grid-cols-4 gap-10 sm:grid-cols-4">
+        {Productos.map((producto) => (
+          <Carts key={producto.id} producto={producto} />
+        ))}
+      </div>
     </div>
   );
 }
