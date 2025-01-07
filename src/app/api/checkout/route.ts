@@ -1,8 +1,8 @@
 import paypal from "@paypal/checkout-server-sdk"
 import { NextResponse } from "next/server";
 
-const clientId="AcfS0ZZ1eLgGXwC_DjwXk8aFs-6aXzTiEopgiwrhxZunt6bXudkTx3FILMW-hKoVdB59UedASJ23W2Hq"
-const clientSecret="ECrFa3YSmLi6o6OsgJbDhC54v7cRB3IgX_cYooqXOga6R9u7f1K3ZYj5kLoVgJA6X5N2L500SzMJRGXY"
+const clientId = process.env.PAYPAL_CLIENT_ID || '';
+const clientSecret = process.env.PAYPAL_SECRET_KEY || '';
 const environment = new paypal.core.SandboxEnvironment(clientId, clientSecret);
 const client = new paypal.core.PayPalHttpClient(environment);
 
@@ -15,13 +15,70 @@ export async function POST (){
         {
             amount: {
             currency_code: "USD",
-            value: "100.00",
+            value: "295.00",
+            breakdown: {
+                item_total: {
+                    currency_code: "USD",
+                    value: "300.00",
+                },
+                discount: {
+                    currency_code: "USD",
+                    value: "10.00",
+                    //descuento
+                },
+                handling: {
+                    currency_code: "USD",
+                    value: "0.00",
+                    //cargo adicional por manejo
+                },
+                insurance: {
+                    currency_code: "USD",
+                    value: "0.00",
+                    //cargo por seguro en esta transacción
+                },
+                shipping: {
+                    currency_code: "USD",
+                    value: "10.00",
+                    //costos de envío
+                },
+                shipping_discount: {
+                    currency_code: "USD",
+                    value: "5.00",
+                    //descuento al envío
+                },
+                tax_total: {
+                    currency_code: "USD",
+                    value: "0.00",
+                }
+            }
             },
-            description: "un libro de React",
+            items: [
+                {
+                    name: "React",
+                    description: "re",
+                    quantity: "1",
+                    unit_amount: {
+                        currency_code: "USD",
+                        value: "200.00",
+                    },
+                    category: "DIGITAL_GOODS"
+                },
+                {
+                    name: "React",
+                    description: "re",
+                    quantity: "1",
+                    unit_amount: {
+                        currency_code: "USD",
+                        value: "100.00",
+                    },
+                    category: "PHYSICAL_GOODS"
+                },
+            ],
         },
         ],
     });
     const respuesta = await client.execute(request);
-    console.log(respuesta)
+    console.log({Response: respuesta});
+    console.log({Captura: respuesta.result});
     return NextResponse.json(respuesta.result.id);
 }

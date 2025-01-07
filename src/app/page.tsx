@@ -20,8 +20,8 @@ export default function Home() {
           console.log(data);
           await actions.order?.capture();
         }}
-        onCancel={(data)=>{
-          console.log("se cancelo la orden " + data);
+        onCancel={async (data) => {
+          console.log("se cancelo la orden " + data.orderID);
         }}
         />
       </PayPalScriptProvider>
