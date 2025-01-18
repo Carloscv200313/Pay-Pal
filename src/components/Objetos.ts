@@ -1,92 +1,56 @@
 export const Productos = [
     {
         id: 1,
-        nombre: "Auriculares Bluetooth",
-        descripcion: "Auriculares inalámbricos con cancelación de ruido y hasta 30 horas de batería.",
         cantidad: 10,
-        precio: 59.99,
-        imagen: "/1.png",
-        categoria: "Electrónica"
+        nombre: "nikke azules",
+        descripcion: "Lisbon, Portugal",
+        precio: 850,
+        imagen: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Software"
     },
     {
         id: 2,
-        nombre: "Mouse Gamer",
-        descripcion: "Mouse ergonómico con 7 botones programables y luces RGB personalizables.",
-        cantidad: 15,
-        precio: 29.99,
-        imagen: "/1.png",
-        categoria: "Accesorios de Computadora"
+        cantidad: 8,
+        nombre: "nikke rosados",
+        descripcion: "Lisbon, Portugal",
+        precio: 850,
+        imagen: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Hotel"
     },
     {
         id: 3,
-        nombre: "Teclado Mecánico",
-        descripcion: "Teclado mecánico retroiluminado con switches personalizados.",
-        cantidad: 8,
-        precio: 79.99,
-        imagen: "/1.png",
-        categoria: "Accesorios de Computadora"
+        cantidad: 100,
+        nombre: "nike rojas",
+        descripcion: "Lisbon, Portugal",
+        precio: 450,
+        imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Hotel"
     },
     {
         id: 4,
-        nombre: "Camiseta Deportiva",
-        descripcion: "Camiseta de poliéster transpirable, ideal para actividades deportivas.",
-        cantidad: 20,
-        precio: 19.99,
-        imagen: "/1.png",
-        categoria: "Ropa"
+        cantidad: 10,
+        nombre: "azules",
+        descripcion: "Lisbon, Portugal",
+        precio: 850,
+        imagen: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Software"
     },
     {
         id: 5,
-        nombre: "Smartphone",
-        descripcion: "Teléfono móvil con pantalla AMOLED de 6.5 pulgadas y cámara de 64MP.",
-        cantidad: 5,
-        precio: 499.99,
-        imagen: "/1.png",
-        categoria: "Electrónica"
+        cantidad: 8,
+        nombre: "rosados",
+        descripcion: "Lisbon, Portugal",
+        precio: 850,
+        imagen: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Hotel"
     },
     {
         id: 6,
-        nombre: "Mochila Impermeable",
-        descripcion: "Mochila resistente al agua con múltiples compartimentos.",
-        cantidad: 12,
-        precio: 34.99,
-        imagen: "/1.png",
-        categoria: "Accesorios"
-    },
-    {
-        id: 7,
-        nombre: "Reloj Inteligente",
-        descripcion: "Reloj inteligente con monitoreo de actividad física y notificaciones.",
-        cantidad: 7,
-        precio: 99.99,
-        imagen: "/1.png",
-        categoria: "Electrónica"
-    },
-    {
-        id: 8,
-        nombre: "Botella Reutilizable",
-        descripcion: "Botella térmica de acero inoxidable, mantiene líquidos calientes o fríos por 12 horas.",
-        cantidad: 25,
-        precio: 14.99,
-        imagen: "/1.png",
-        categoria: "Accesorios"
-    },
-    {
-        id: 9,
-        nombre: "Lámpara de Escritorio LED",
-        descripcion: "Lámpara ajustable con luz blanca y cálida, ideal para trabajar o estudiar.",
-        cantidad: 18,
-        precio: 24.99,
-        imagen: "/1.png",
-        categoria: "Hogar"
-    },
-    {
-        id: 10,
-        nombre: "Zapatillas Deportivas",
-        descripcion: "Zapatillas ligeras y cómodas, ideales para correr y entrenar.",
-        cantidad: 14,
-        precio: 49.99,
-        imagen: "/1.png",
-        categoria: "Ropa"
+        cantidad: 100,
+        nombre: "rojas",
+        descripcion: "Lisbon, Portugal",
+        precio: 450,
+        imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
+        categoria: "Hotel"
     }
 ];

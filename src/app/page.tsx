@@ -1,19 +1,26 @@
+"use client"
 import { Carrito } from "@/components/Carrito";
 import { Carts } from "@/components/Carts";
+import { Footer } from "@/components/Footer";
 import { Productos } from "@/components/Objetos";
+import { useState } from "react";
 
 export default function Home() {
+  const [cantidad, setCantidad] = useState(0)
   return (
-    <div className="relative grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="bg-white h-screen">
       <div className="absolute top-10 right-10">
-        <Carrito />
+        <Carrito cantidad={cantidad} />
       </div>
-      <h1 className="text-7xl font-serif">Tienda virtual</h1>
-      <div className="grid grid-cols-4 gap-10 sm:grid-cols-4">
+      <div className=" py-14 bg-white">
+        <h1 className="text-center text-2xl font-bold text-gray-800">Todos los productos</h1>
+      </div>
+      <section className="py-10  bg-gray-100 grid w-full grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {Productos.map((producto) => (
-          <Carts key={producto.id} producto={producto} />
+          <Carts key={producto.id} producto={producto} setCantidad={setCantidad} cantidad={cantidad} />
         ))}
-      </div>
+      </section>
+      <Footer />
     </div>
   );
 }
