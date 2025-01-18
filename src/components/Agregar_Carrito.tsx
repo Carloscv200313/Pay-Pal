@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 interface Agregar_CarritoProps {
-    contador: number;
     producto: {
         id: number;
         cantidad: number;
@@ -12,7 +11,7 @@ interface Agregar_CarritoProps {
     };
 }
 
-export const Agregar_Carrito: React.FC<Agregar_CarritoProps> = ({ contador, producto }) => {
+export const Agregar_Carrito: React.FC<Agregar_CarritoProps> = ({ producto }) => {
     const [clicked, setClicked] = useState(false);
 
     const agregar = () => {
@@ -25,7 +24,6 @@ export const Agregar_Carrito: React.FC<Agregar_CarritoProps> = ({ contador, prod
         } else {
             carrito.push({
                 id: producto.id,
-                cantidad: contador,
                 nombre: producto.nombre,
                 descripcion: producto.descripcion,
                 precio: producto.precio,

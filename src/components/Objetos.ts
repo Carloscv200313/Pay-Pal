@@ -1,56 +1,56 @@
 export const Productos = [
     {
-        id: 1,
-        cantidad: 10,
-        nombre: "nikke azules",
-        descripcion: "Lisbon, Portugal",
-        precio: 850,
+        id: 101,
+        cantidad: 20,
+        nombre: "Camisas negras",
+        descripcion: "Madrid, España",
+        precio: 1200,
         imagen: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Software"
+        categoria: "Ropa"
     },
     {
-        id: 2,
-        cantidad: 8,
-        nombre: "nikke rosados",
-        descripcion: "Lisbon, Portugal",
-        precio: 850,
+        id: 102,
+        cantidad: 15,
+        nombre: "Zapatos deportivos",
+        descripcion: "Barcelona, España",
+        precio: 950,
         imagen: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Hotel"
+        categoria: "Calzado"
     },
     {
-        id: 3,
-        cantidad: 100,
-        nombre: "nike rojas",
-        descripcion: "Lisbon, Portugal",
-        precio: 450,
+        id: 103,
+        cantidad: 200,
+        nombre: "Chaquetas impermeables",
+        descripcion: "Valencia, España",
+        precio: 2200,
         imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Hotel"
+        categoria: "Ropa"
     },
     {
-        id: 4,
-        cantidad: 10,
-        nombre: "azules",
-        descripcion: "Lisbon, Portugal",
-        precio: 850,
+        id: 104,
+        cantidad: 25,
+        nombre: "Bolsos de cuero",
+        descripcion: "Sevilla, España",
+        precio: 1800,
         imagen: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Software"
+        categoria: "Accesorios"
     },
     {
-        id: 5,
-        cantidad: 8,
-        nombre: "rosados",
-        descripcion: "Lisbon, Portugal",
-        precio: 850,
+        id: 105,
+        cantidad: 12,
+        nombre: "Relojes digitales",
+        descripcion: "Granada, España",
+        precio: 3500,
         imagen: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Hotel"
+        categoria: "Electrónica"
     },
     {
-        id: 6,
-        cantidad: 100,
-        nombre: "rojas",
-        descripcion: "Lisbon, Portugal",
-        precio: 450,
+        id: 106,
+        cantidad: 300,
+        nombre: "Gafas de sol",
+        descripcion: "Bilbao, España",
+        precio: 900,
         imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8&auto=format&fit=crop&w=1170&q=80",
-        categoria: "Hotel"
+        categoria: "Accesorios"
     }
 ];
