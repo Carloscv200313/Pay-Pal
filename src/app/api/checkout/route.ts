@@ -13,14 +13,9 @@ interface Product {
     categoria: string;
 }
 export async function POST(req: NextRequest) {
-    const { productos,total } = await req.json();
-    //const nuevoTotal: number = productos.reduce((acc: number, producto: Product) => acc + (parseFloat(producto.precio) * producto.cantidadEnCarrito), 0);
-    //console.log(productos);
-    //console.log(nuevoTotal);
-    console.log(total);
+    const { productos, total, impuesto } = await req.json();
     const request = new paypal.orders.OrdersCreateRequest();
     request.prefer("return=representation");
-
     // Construcción del cuerpo de la solicitud
     request.requestBody({
         intent: "CAPTURE",
@@ -28,11 +23,15 @@ export async function POST(req: NextRequest) {
             {
                 amount: {
                     currency_code: "USD",
-                    value: total,
+                    value: total ,// Total incluye el impuesto
                     breakdown: {
                         item_total: {
                             currency_code: "USD",
-                            value: total,
+                            value: (parseFloat(total) - parseFloat(impuesto)).toFixed(2)
+                        },
+                        tax_total: {
+                            currency_code: "USD",
+                            value: impuesto, // Impuesto enviado desde el frontend
                         },
                         discount: {
                             currency_code: "USD",
@@ -54,16 +53,12 @@ export async function POST(req: NextRequest) {
                             currency_code: "USD",
                             value: "0.00",
                         },
-                        tax_total: {
-                            currency_code: "USD",
-                            value: "0.00",
-                        },
                     },
                 },
                 items: productos.map((produc: Product) => ({
                     name: produc.nombre,
                     description: produc.descripcion,
-                    quantity: produc.cantidadEnCarrito,
+                    quantity: produc.cantidadEnCarrito.toString(),
                     unit_amount: {
                         currency_code: "USD",
                         value: produc.precio,
@@ -77,8 +72,6 @@ export async function POST(req: NextRequest) {
     // Ejecución de la solicitud
     const respuesta = await client.execute(request);
 
-    //console.log({ Response: respuesta });
-    //console.log({ Captura: respuesta.result });
-
     return NextResponse.json(respuesta.result.id);
 }
+

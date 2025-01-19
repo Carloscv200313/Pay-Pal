@@ -10,35 +10,29 @@ interface Producto{
 interface Productos {
     productos: Producto[];
     total: number;
+    impuesto: number;
+    setOrden: React.Dispatch<React.SetStateAction<string>>
+    setOrdenPagada: React.Dispatch<React.SetStateAction<boolean>>
 }
-export const Pago = ({productos, total}: Productos ) => {
+export const Pago = ({productos, total , impuesto, setOrden,setOrdenPagada}: Productos ) => {
     const initialOptions = {
         clientId: "AcfS0ZZ1eLgGXwC_DjwXk8aFs-6aXzTiEopgiwrhxZunt6bXudkTx3FILMW-hKoVdB59UedASJ23W2Hq",
     };
     return (
-        <div className="pt-10 w-3/4 text-center ">
-            <h1>{total}</h1>
-            <h1>{productos[0].nombre} </h1>
+        <div className="pt-0 w-full text-center ">
             <PayPalScriptProvider options={initialOptions}>
                 <PayPalButtons 
-                    style={{ layout: "horizontal" ,color:"blue", borderRadius: 20 , height: 45}}
+                    style={{ layout: "horizontal" ,color:"gold" , disableMaxWidth: true, borderRadius: 10 , height: 45}}
                     createOrder={async () => {
-                        const resp = await fetch("/api/checkout", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                                productos,
-                                total,
-                            }),
-                        });                        
+                        const resp = await fetch("/api/checkout", { method: "POST", body: JSON.stringify({productos,total,impuesto})});
                         const order = await resp.json();
                         console.log(order);
+                        setOrden(order)
                         return order;
                     }}
                     onApprove={async (data, actions) => {
                         console.log(data);
+                        setOrdenPagada(true)
                         await actions.order?.capture();
                     }}
                     onCancel={async (data) => {

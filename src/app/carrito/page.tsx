@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Carrito_Vacio from '@/components/Carrito_Vacio'
-import { Pago } from '@/components/Pago'
+import Link from 'next/link'
 interface ProductoOriginal {
     id: number;
     cantidad: number;
@@ -61,6 +61,10 @@ export default function CarritoDeCompras() {
         localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
         setProductosEnCarrito(prevProductos => prevProductos.filter(producto => producto.id !== id))
     }
+    const Confirmar=()=>{
+        localStorage.setItem('pedido', JSON.stringify(productosEnCarrito))
+        localStorage.setItem('total', JSON.stringify(total))
+    }
     if (productosEnCarrito.length == 0) {
         return <Carrito_Vacio />
     }
@@ -69,7 +73,7 @@ export default function CarritoDeCompras() {
             <div className="flex items-center justify-center flex-wrap gap-4 w-3/4">
                 {productosEnCarrito.map(producto => (
                     <Card key={producto.id} className="flex flex-col">
-                        <CardContent>
+                        <CardContent className='p-5'>
                             <Image
                                 src={producto.imagen || "/placeholder.svg"}
                                 alt={producto.nombre}
@@ -128,8 +132,12 @@ export default function CarritoDeCompras() {
                 <div className='flex justify-between text-2xl font-bold pt-5 border-t-2 '>
                     <p>Total a pagar: </p>
                     <p>${total.toFixed(2)}</p>
-                </div> 
-                <Pago productos={productosEnCarrito} total={total} /> 
+                </div>
+                <Link href={"/Orden"}>
+                    <Button className="mt-4 w-full" onClick={Confirmar}>
+                        Confirmar Compra
+                    </Button>
+                </Link>
             </div>
         </div>
     )
