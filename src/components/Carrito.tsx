@@ -9,7 +9,7 @@ export const Carrito = ({ cantidad }: Props) => {
         <Link
             href={"/carrito"}
             className=" p-5 rounded-full cursor-pointer flex justify-center items-center">
-            <span className=" flex h-1 w-1 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">{cantidad} </span>
+            <span className=" flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-3 text-base text-white">{cantidad} </span>
             <IconShoppingCart stroke={2} className='text-black top-8 right-8 absolute w-8 h-8' />
         </Link>
     )

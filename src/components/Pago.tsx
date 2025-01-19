@@ -32,8 +32,8 @@ export const Pago = ({productos, total , impuesto, setOrden,setOrdenPagada}: Pro
                     }}
                     onApprove={async (data, actions) => {
                         console.log(data);
-                        setOrdenPagada(true)
                         await actions.order?.capture();
+                        setOrdenPagada(true)
                     }}
                     onCancel={async (data) => {
                         console.log("se cancelo la orden " + data.orderID);

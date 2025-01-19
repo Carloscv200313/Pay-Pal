@@ -7,7 +7,7 @@ return (
 		<div className="grid justify-center  lg:justify-between">
 			<div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:
             space-x-6">
-				<span>Copy rgight © 2023 by codemix team </span>
+				<span>Copy rgight © 2024 by G&C </span>
 				<a rel="noopener noreferrer" href="#">
 					<span>Privacy policy</span>
 				</a>

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { IconArrowBarLeft } from '@tabler/icons-react';
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -63,13 +64,22 @@ export default function CarritoDeCompras() {
     }
     const Confirmar=()=>{
         localStorage.setItem('pedido', JSON.stringify(productosEnCarrito))
-        localStorage.setItem('total', JSON.stringify(total))
+        const monto = total* 118 / 100
+        const impuesto = total*18/100
+        localStorage.setItem('total', JSON.stringify({total: monto, impuesto: impuesto, subtotal:total}))
     }
     if (productosEnCarrito.length == 0) {
         return <Carrito_Vacio />
     }
+    const eliminar = ()=>{
+        localStorage.clear()
+    }
     return (
-        <div className="container mx-auto p-4 flex ">
+        <div className="container p-4 flex ">
+            <Link href={"/"} className='fixed flex justify-center items-center' onClick={eliminar}>
+                <IconArrowBarLeft stroke={2} className='w-10 h-10'/>
+                <p className='text-xl font-bold'>Back</p>
+            </Link>
             <div className="flex items-center justify-center flex-wrap gap-4 w-3/4">
                 {productosEnCarrito.map(producto => (
                     <Card key={producto.id} className="flex flex-col">
@@ -116,11 +126,11 @@ export default function CarritoDeCompras() {
                     </Card>
                 ))}
             </div>
-            <div className="mt-8 w-1/4 fixed right-10 flex flex-col">
+            <div className="w-1/4  flex flex-col border p-5 rounded-2xl h-full bg-neutral-100 ">
                 <h2 className="text-xl font-bold">Resumen del Pedido</h2>
                 {
                     productosEnCarrito.map((producto) => (
-                        <div key={producto.id} className='flex justify-between my-5'>
+                        <div key={producto.id} className='flex justify-between my-2'>
                             <div>
                                 <h3 className='p-0 m-0' >{producto.nombre} </h3>
                                 <p className='text-neutral-400 font-sans p-0 m-0 text-base'>Cantidad : {producto.cantidadEnCarrito}</p>

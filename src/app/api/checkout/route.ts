@@ -15,6 +15,7 @@ interface Product {
 export async function POST(req: NextRequest) {
     const { productos, total, impuesto } = await req.json();
     const request = new paypal.orders.OrdersCreateRequest();
+    console.log({ productos, total, impuesto});
     request.prefer("return=representation");
     // Construcción del cuerpo de la solicitud
     request.requestBody({
@@ -57,8 +58,8 @@ export async function POST(req: NextRequest) {
                 },
                 items: productos.map((produc: Product) => ({
                     name: produc.nombre,
-                    description: produc.descripcion,
-                    quantity: produc.cantidadEnCarrito.toString(),
+                    description: produc.descripcion ,
+                    quantity: produc.cantidadEnCarrito,
                     unit_amount: {
                         currency_code: "USD",
                         value: produc.precio,
@@ -71,7 +72,7 @@ export async function POST(req: NextRequest) {
 
     // Ejecución de la solicitud
     const respuesta = await client.execute(request);
-
+    console.log(respuesta);
     return NextResponse.json(respuesta.result.id);
 }
 
