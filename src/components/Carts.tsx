@@ -38,6 +38,7 @@ export const Carts: React.FC<Props> = ({ producto, cantidad, setCantidad }) => {
 
                 <div className="relative flex items-end overflow-hidden rounded-xl">
                     <Image
+                        priority
                         width={500}
                         height={500}
                         src={producto.imagen}

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import Carrito_Vacio from '@/components/Carrito_Vacio'
+import { Pago } from '@/components/Pago'
 interface ProductoOriginal {
     id: number;
     cantidad: number;
@@ -10,6 +12,8 @@ interface ProductoOriginal {
     descripcion: string;
     precio: number;
     imagen: string;
+    cantidadEnCarrito: number;
+    categoria: string;
 }
 
 interface ProductoCarrito extends Omit<ProductoOriginal, 'cantidad'> {
@@ -57,12 +61,9 @@ export default function CarritoDeCompras() {
         localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
         setProductosEnCarrito(prevProductos => prevProductos.filter(producto => producto.id !== id))
     }
-
-    const realizarPago = () => {
-        alert('Procesando pago...')
-        // Aquí iría la lógica real de pago
+    if (productosEnCarrito.length == 0) {
+        return <Carrito_Vacio />
     }
-
     return (
         <div className="container mx-auto p-4 flex ">
             <div className="flex items-center justify-center flex-wrap gap-4 w-3/4">
@@ -74,6 +75,7 @@ export default function CarritoDeCompras() {
                                 alt={producto.nombre}
                                 width={1000}
                                 height={1000}
+                                priority
                                 className="w-full h-48 object-cover mb-2"
                             />
                             <h2 className="text-lg font-semibold">{producto.nombre}</h2>
@@ -110,23 +112,24 @@ export default function CarritoDeCompras() {
                     </Card>
                 ))}
             </div>
-            <div className="mt-8 w-1/4 fixed right-10">
+            <div className="mt-8 w-1/4 fixed right-10 flex flex-col">
                 <h2 className="text-xl font-bold">Resumen del Pedido</h2>
                 {
                     productosEnCarrito.map((producto) => (
                         <div key={producto.id} className='flex justify-between my-5'>
-                            <h3>{producto.nombre} </h3>
-                            <h2>$ {producto.cantidadEnCarrito * producto.precio} </h2>
+                            <div>
+                                <h3 className='p-0 m-0' >{producto.nombre} </h3>
+                                <p className='text-neutral-400 font-sans p-0 m-0 text-base'>Cantidad : {producto.cantidadEnCarrito}</p>
+                            </div>
+                            <h2>${producto.cantidadEnCarrito * producto.precio} </h2>
                         </div>
                     ))
                 }
                 <div className='flex justify-between text-2xl font-bold pt-5 border-t-2 '>
                     <p>Total a pagar: </p>
                     <p>${total.toFixed(2)}</p>
-                </div>                
-                <Button onClick={realizarPago} className="mt-4 w-full">
-                    Proceder al Pago
-                </Button>
+                </div> 
+                <Pago productos={productosEnCarrito} total={total} /> 
             </div>
         </div>
     )
